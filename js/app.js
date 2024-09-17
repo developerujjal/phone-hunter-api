@@ -1,14 +1,33 @@
 
-const loadPhones = async () => {
-    const res = await fetch('https://openapi.programming-hero.com/api/phones?search=iphone');
+const loadPhones = async (searchText, isShowAll) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const dataPromise = await res.json();
     const phonesData = dataPromise.data;
-    displaydata(phonesData)
-}
+    displaydata(phonesData, isShowAll)
+};
 
 
-const displaydata = (phones) => {
-    const productsContainerElement = document.querySelector('.prodcusts-container')
+
+const displaydata = (phones, isShowAll) => {
+    const productsContainerElement = document.querySelector('.prodcusts-container');
+    // clear products-container cards before adding new cards
+    productsContainerElement.textContent = '';
+
+    // display show all btn if there are more then 122
+    const showAllBtnElement = document.getElementById('btn-show-all-container');
+    if(phones.length > 12 && !isShowAll){
+        showAllBtnElement.classList.remove('hidden');
+    }
+    else{
+        showAllBtnElement.classList.add('hidden');
+    }
+
+
+    // show phonse up to 12 if isShowAll false;
+    if(!isShowAll){
+        phones = phones.slice(0, 12);
+    }
+
     phones.forEach(phone => {
         const newDiv = document.createElement('div');
         newDiv.classList.add('product-box-container');
@@ -30,7 +49,37 @@ const displaydata = (phones) => {
 
         productsContainerElement.appendChild(newDiv);
        
-    })
+    });
+
+    loadingSpinner(false);
+};
+
+
+const handleSearch = (isShowAll) => {
+    loadingSpinner(true);
+    const searchFieldElement = document.getElementById('search-field');
+    const searchFieldValue = searchFieldElement.value;
+    loadPhones(searchFieldValue, isShowAll);
+
+    
+};
+
+
+const loadingSpinner = (isloading) => {
+    const loaderSpinnerElement = document.getElementById('loaderSpinner');
+    if(isloading){
+        loaderSpinnerElement.classList.remove('hidden');
+    }
+    else{
+        loaderSpinnerElement.classList.add('hidden');
+    }
 }
+
+
+const displayShowAll = () => {
+    handleSearch(true);
+}
+
+
 
 loadPhones();
