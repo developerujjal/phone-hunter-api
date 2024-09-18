@@ -22,9 +22,7 @@ const displaydata = (phones, isShowAll) => {
     // display show all btn if there are more then 12
     const showAllBtnElement = document.getElementById('btn-show-all-container');
     if(phones.length > 20 && !isShowAll){
-        phones = phones.slice(0, 20);
         showAllBtnElement.classList.remove('hidden');
-        
     }
     else{
         showAllBtnElement.classList.add('hidden');
@@ -32,9 +30,9 @@ const displaydata = (phones, isShowAll) => {
 
 
     // show phonse up to 12 if isShowAll false;
-    // if(isShowAll){
-        
-    // }
+    if(!isShowAll){
+        phones = phones.slice(0, 20);
+    }
 
 
 
