@@ -57,6 +57,9 @@
                             <input id="search-field" type="text" placeholder="Search your phone">
                             <button onclick="handleSearch()">Search</button>
                         </div>
+                        <div id="noFoundMessage" class="no-found hidden">
+                            <h3>No Phone Found. Please try a new search</h3>
+                        </div>
                         <div id="loaderSpinner" class="loading-spinner hidden">
                             <div class="loader"></div>
                         </div>                  
@@ -87,13 +90,42 @@
                      </div>
                 </div>
             </div>
+
+            <div id="myModal" class="modal removeModel">
+
+                <div class="modal-content">
+                    <div class="modal-product-details-container">
+                        <div class="modal-proudct-img">
+                            <!-- <img src="img/phone.png" alt=""> -->
+                        </div>
+                        <div class="modal-product-details">
+                            <!-- <h3>iPhone 13 Pro</h3>
+                            <p class="modal-des">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                            <p class="model-storage margin"><span> <span>Storage :</span> 128GB/256GB/1TB Storage, No card slot</span></p>
+                            <p class="modal-display margin"><span> <span>Display Size :</span> 6.7 Inches, 109.8 cm</span></p>
+                            <p class="modal-chipset margin"> <span> <span>Chipset :</span> Apple A15 Bionic</span> </p>
+                            <p class="modal-memory margin"><span> <span>Memory :</span> 128GB 6 GB RAM, 256GB RAM, 512GB RAM1 1TB 6GB RAM</span></p>
+                            <p class="modal-slug margin"><span> <span>Slug :</span> Applice_Iphone_13_Pro_Max</span></p>
+                            <p class="modal-release-data margin"><span> <span>Release data :</span> Released 2021, September 24</span></p>
+                            <p class="modal-brand margin"><span> <span>Brand :</span> Apple</span></p>
+                            <p class="model-gps margin"><span> <span>GPS :</span> AYes, with A-GPS, GLONASS, GALILEO, BDS, QZSS</span></p> -->
+                        </div>
+                        <div class="modal-btn-close">
+                            <button class="modal-close-btn btn-for-all">Close</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
         <!-- <section>
-            <div id="btn-show-all-container">
-                <button class="btn-for-all">Show All</button>
-             </div>
+            <h1>login</h1>
+            <div class="model">
+
+            </div>
         </section> -->
+
     </main>
 
     <footer>
